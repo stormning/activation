@@ -4,7 +4,7 @@
 <div class="page-header text-center">
   <h2>激活系统</h2>
 </div>
-<div class="well">
+<div class="well" style="padding-bottom: 9px">
 <div class="row">
 	<form class="bs-example-form" role="form">
 		<div class="col-sm-8 col-xs-12">
