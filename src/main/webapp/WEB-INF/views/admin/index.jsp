@@ -4,42 +4,40 @@
 <div class="page-header text-center">
   <h2>激活系统</h2>
 </div>
-<div class="well" style="padding-bottom: 9px">
-<div class="row">
-	<form class="bs-example-form" role="form">
-		<div class="col-sm-8 col-xs-12">
-			<div class="row">
-				<div class="col-sm-4 col-xs-12"><div class="input-group"><span class="input-group-addon">课程卡号</span><input type="text" class="form-control"></div></div>
-				<div class="col-sm-4 col-xs-12"><div class="input-group"><span class="input-group-addon">密码</span><input type="password" class="form-control"></div></div>
-				<div class="col-sm-4 col-xs-12"><div class="input-group"><span class="input-group-addon">机器码</span><input type="text" class="form-control"></div></div>
+<div class="well activation-form">
+	<div class="row">
+		<form class="bs-example-form" role="form">
+			<div class="col-sm-8 col-xs-12">
+				<div class="row">
+					<div class="col-sm-4 col-xs-12"><div class="input-group"><span class="input-group-addon">课程卡号</span><input type="text" class="form-control"></div></div>
+					<div class="col-sm-4 col-xs-12"><div class="input-group"><span class="input-group-addon">密码</span><input type="password" class="form-control"></div></div>
+					<div class="col-sm-4 col-xs-12"><div class="input-group"><span class="input-group-addon">机器码</span><input type="text" class="form-control"></div></div>
+				</div>
+				<div class="row">
+					<div class="col-sm-6 col-xs-12"><div class="input-group"><span class="input-group-addon">销售姓名</span><input type="text" class="form-control"></div></div>
+					<div class="col-sm-6 col-xs-12"><div class="input-group"><span class="input-group-addon">学生姓名</span><input type="text" class="form-control"></div></div>
+				</div>
+				<div class="row">
+					<div class="col-sm-6 col-xs-12"><div class="input-group"><span class="input-group-addon">家长姓名</span><input type="text" class="form-control"></div></div>
+					<div class="col-sm-6 col-xs-12"><div class="input-group"><span class="input-group-addon">家长手机</span><input type="text" class="form-control"></div></div>
+				</div>
 			</div>
-			<div class="row">
-				<div class="col-sm-6 col-xs-12"><div class="input-group"><span class="input-group-addon">销售姓名</span><input type="text" class="form-control"></div></div>
-				<div class="col-sm-6 col-xs-12"><div class="input-group"><span class="input-group-addon">学生姓名</span><input type="text" class="form-control"></div></div>
-			</div>
-			<div class="row">
-				<div class="col-sm-6 col-xs-12"><div class="input-group"><span class="input-group-addon">家长姓名</span><input type="text" class="form-control"></div></div>
-				<div class="col-sm-6 col-xs-12"><div class="input-group"><span class="input-group-addon">家长手机</span><input type="text" class="form-control"></div></div>
-			</div>
-		</div>
-	</form>
-	<div class="col-sm-2 col-xs-12 text-center visible-md visible-lg">
-		<div style="">
+		</form>
+		<div class="col-sm-2 col-xs-12 text-center visible-md visible-lg">
 			<button type="button" class="btn btn-success btn-lg" data-loading-text="请求中..." style="height: 80px;margin-top: 20px;">获取激活码</button>
 		</div>
+		<div class="col-sm-2 col-xs-12 text-center visible-xs visible-sm">
+			<button type="button" class="btn btn-success btn-lg" data-loading-text="请求中...">获取激活码</button>
+		</div>
+		<div class="col-sm-2 col-xs-12 text-center visible-md visible-lg">
+			<h1 class="mb0">授权码</h1>
+			<h2 class="text-primary mt0">X4K2F9</h2>
+		</div>
+		<div class="col-sm-2 col-xs-12 text-center visible-xs visible-sm">
+			<h3 class="mb0">授权码</h3>
+			<h4 class="text-primary mt0">X4K2F9</h4>
+		</div>
 	</div>
-	<div class="col-sm-2 col-xs-12 text-center visible-xs visible-sm">
-		<button type="button" class="btn btn-success btn-lg" data-loading-text="请求中...">获取激活码</button>
-	</div>
-	<div class="col-sm-2 col-xs-12 text-center visible-md visible-lg">
-		<h1 style="margin-bottom: 0px">授权码</h1>
-		<h2 class="text-primary" style="margin-top: 5px;">X4K2F9</h2>
-	</div>
-	<div class="col-sm-2 col-xs-12 text-center visible-xs visible-sm">
-		<h3 style="margin-bottom: 0px">授权码</h3>
-		<h4 class="text-primary" style="margin-top: 5px;">X4K2F9</h4>
-	</div>
-</div>
 </div>
 
 <h3>激活历史记录:</h3>
