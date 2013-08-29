@@ -2,34 +2,47 @@
 	pageEncoding="UTF-8"%>
 <%@ include file="../include.jsp"%>
 <div class="page-header text-center">
-  <h1>激活系统</h1>
+  <h2>激活系统</h2>
 </div>
+<div class="well">
 <div class="row">
-	<div class="col-xs-6">
-		<div class="row">
-			<div class="col-xs-4">课程卡号</div>
-			<div class="col-xs-4">密码</div>
-			<div class="col-xs-4">机器码</div>
+	<form class="bs-example-form" role="form">
+		<div class="col-sm-8 col-xs-12">
+			<div class="row">
+				<div class="col-sm-4 col-xs-12"><div class="input-group"><span class="input-group-addon">课程卡号</span><input type="text" class="form-control"></div></div>
+				<div class="col-sm-4 col-xs-12"><div class="input-group"><span class="input-group-addon">密码</span><input type="password" class="form-control"></div></div>
+				<div class="col-sm-4 col-xs-12"><div class="input-group"><span class="input-group-addon">机器码</span><input type="text" class="form-control"></div></div>
+			</div>
+			<div class="row">
+				<div class="col-sm-6 col-xs-12"><div class="input-group"><span class="input-group-addon">销售姓名</span><input type="text" class="form-control"></div></div>
+				<div class="col-sm-6 col-xs-12"><div class="input-group"><span class="input-group-addon">学生姓名</span><input type="text" class="form-control"></div></div>
+			</div>
+			<div class="row">
+				<div class="col-sm-6 col-xs-12"><div class="input-group"><span class="input-group-addon">家长姓名</span><input type="text" class="form-control"></div></div>
+				<div class="col-sm-6 col-xs-12"><div class="input-group"><span class="input-group-addon">家长手机</span><input type="text" class="form-control"></div></div>
+			</div>
 		</div>
-		<div class="row">
-			<div class="col-xs-6">销售姓名</div>
-			<div class="col-xs-6">学生姓名</div>
-		</div>
-		<div class="row">
-			<div class="col-xs-6">学生姓名</div>
-			<div class="col-xs-6">家长手机</div>
+	</form>
+	<div class="col-sm-2 col-xs-12 text-center visible-md visible-lg">
+		<div style="">
+			<button type="button" class="btn btn-success btn-lg" data-loading-text="请求中..." style="height: 80px;margin-top: 20px;">获取激活码</button>
 		</div>
 	</div>
-	<div class="col-xs-3 text-center">
-		<button type="button" class="btn btn-success btn-lg"
-			data-loading-text="请求中...">获取激活码</button>
-		<button type="button" data-loading-text="Loading..."
-			class="btn btn-primary">Loading state</button>
+	<div class="col-sm-2 col-xs-12 text-center visible-xs visible-sm">
+		<button type="button" class="btn btn-success btn-lg" data-loading-text="请求中...">获取激活码</button>
 	</div>
-	<div class="col-xs-3">嘻嘻嘻嘻嘻嘻嘻嘻嘻</div>
+	<div class="col-sm-2 col-xs-12 text-center visible-md visible-lg">
+		<h1 style="margin-bottom: 0px">授权码</h1>
+		<h2 class="text-primary" style="margin-top: 5px;">X4K2F9</h2>
+	</div>
+	<div class="col-sm-2 col-xs-12 text-center visible-xs visible-sm">
+		<h3 style="margin-bottom: 0px">授权码</h3>
+		<h4 class="text-primary" style="margin-top: 5px;">X4K2F9</h4>
+	</div>
+</div>
 </div>
 
-<h2>激活历史记录:</h2>
+<h3>激活历史记录:</h3>
 <hr />
 <div class="table-responsive">
 	<table class="table">
