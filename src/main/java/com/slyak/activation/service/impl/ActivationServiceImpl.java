@@ -1,17 +1,26 @@
 package com.slyak.activation.service.impl;
 
+import java.util.Date;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+import org.springframework.util.CollectionUtils;
 
 import com.slyak.activation.dao.ActivationRecordDAO;
+import com.slyak.activation.dao.CourseDao;
 import com.slyak.activation.dao.StudyCardDAO;
 import com.slyak.activation.ex.ActivationException;
 import com.slyak.activation.ex.ErrorCode;
 import com.slyak.activation.model.ActivationRecord;
 import com.slyak.activation.model.ActivationRequest;
+import com.slyak.activation.model.Course;
 import com.slyak.activation.model.StudyCard;
 import com.slyak.activation.service.ActivationService;
+import com.slyak.activation.service.Md5ActivateCodeGenerator;
 
 @Service
 public class ActivationServiceImpl implements ActivationService {
@@ -20,33 +29,68 @@ public class ActivationServiceImpl implements ActivationService {
 	private StudyCardDAO studyCardDAO;
 	
 	@Autowired
+	private CourseDao courseDao;
+	
+	@Autowired
 	private ActivationRecordDAO activationRecordDAO;
 	
 	@Value("#{config['activate.eachhardcode.maxcount']}")
 	private int eachHardCodeMaxCount = 1;
 	
+	@Value("#{config['activate.hardcode.maxcount']}")
+	private int hardCodeMaxCount = 1;
+	
 
-	public String activate(ActivationRequest activationRequest) throws ActivationException{
-		String cardNo = activationRequest.getCardNo();
+	public String activate(ActivationRequest request) throws ActivationException{
+		String cardNo = request.getCardNo();
 		StudyCard card = studyCardDAO.findOne(cardNo);
-		if(card == null || !card.getPassword().equalsIgnoreCase(activationRequest.getPassword())){
+		if(card == null || !card.getPassword().equalsIgnoreCase(request.getPassword())){
 			throw new ActivationException(ErrorCode.CARDNO_OR_PASSWORD_ERROR);
+		}else if (card.getExpireAt()!=null&&card.getExpireAt().before(new Date())){
+			throw new ActivationException(ErrorCode.EXPIRED_CARD_ERROR);
 		}else{
-			int count = activationRecordDAO.countByCardNoAndHardCode(cardNo,activationRequest.getHardCode());
-			if(count >= eachHardCodeMaxCount){
+			String hardCode = request.getHardCode();
+			List<ActivationRecord> arrs = activationRecordDAO.findByCardNo(cardNo);
+			if(!CollectionUtils.isEmpty(arrs)&&arrs.size()>=hardCodeMaxCount){
 				throw new ActivationException(ErrorCode.HARDCODE_OVER_TIMES_ERROR);
 			}
-			
-			//get lessons and do md5
-			//TODO
-			String verifyCode = "";
+			int eachHardCodeCount = 0;
+			for (ActivationRecord ar : arrs) {
+				if(hardCode.equals(ar.getHardCode())){
+					eachHardCodeCount++;
+				}
+			}
+			if(eachHardCodeCount>=eachHardCodeMaxCount){
+				throw new ActivationException(ErrorCode.HARDCODE_OVER_TIMES_ERROR);
+			}
+			String verifyCode = Md5ActivateCodeGenerator.generate(card.getCourseId(), "0", hardCode);
 			
 			ActivationRecord ar = new ActivationRecord();
-			
+			ar.setParentMobile(request.getParentMobile());
+			ar.setParentName(request.getParentName());
+			ar.setCardNo(request.getCardNo());
+			ar.setSeller(request.getSeller());
+			ar.setHardCode(hardCode);
+			ar.setStudentName(request.getStudentName());
+			ar.setActivateAt(new Date());
 			ar.setVerifyCode(verifyCode);
-//			Activa
+			ar.setCourseId(card.getCourseId());
 			activationRecordDAO.save(ar);
-			return null;
+			return verifyCode;
 		}
+	}
+	
+	public Page<ActivationRecord> findAll(Pageable pageable){
+		Page<ActivationRecord> page = activationRecordDAO.findAll(pageable);
+		if(page!=null && page.getTotalElements()>0){
+			List<ActivationRecord> ars = page.getContent();
+			for (ActivationRecord ar : ars) {
+				Course course = courseDao.findOne(ar.getCourseId());
+				if(course!=null){
+					ar.setCourseName(course.getName());
+				}
+			}
+		}
+		return page;
 	}
 }

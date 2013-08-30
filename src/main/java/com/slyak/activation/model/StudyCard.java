@@ -1,14 +1,21 @@
 package com.slyak.activation.model;
 
 import java.io.Serializable;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+import org.hibernate.annotations.Cache;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 @Entity
 @Table(name = "t_study_card")
+@Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
 public class StudyCard implements Serializable {
 
 	private static final long serialVersionUID = 8319129204768969941L;
@@ -20,8 +27,12 @@ public class StudyCard implements Serializable {
 	@Column(nullable = true)
 	private String password;
 	
-	@Column(nullable = true)
-	private String productLessons;
+	@Column(name="course_id",nullable = true)
+	private String courseId;
+	
+	@Column(name="expire_at")
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date expireAt;
 
 	public String getCardNo() {
 		return cardNo;
@@ -37,6 +48,22 @@ public class StudyCard implements Serializable {
 
 	public void setPassword(String password) {
 		this.password = password;
+	}
+
+	public String getCourseId() {
+		return courseId;
+	}
+
+	public void setCourseId(String courseId) {
+		this.courseId = courseId;
+	}
+
+	public Date getExpireAt() {
+		return expireAt;
+	}
+
+	public void setExpireAt(Date expireAt) {
+		this.expireAt = expireAt;
 	}
 
 }

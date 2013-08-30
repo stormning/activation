@@ -4,12 +4,21 @@ import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.Transient;
 
+import org.hibernate.annotations.Cache;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
+
+@Entity
+@Table(name="t_activation_record")
+@Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
 public class ActivationRecord implements Serializable {
 
 	private static final long serialVersionUID = 5242389669658337949L;
@@ -20,6 +29,12 @@ public class ActivationRecord implements Serializable {
 
 	@Column(name = "card_no", nullable = false)
 	private String cardNo;
+	
+	@Column(name = "course_id", nullable = false)
+	private String courseId;
+	
+	@Transient
+	private String courseName;
 
 	@Column(name = "activate_at", nullable = false)
 	@Temporal(TemporalType.TIMESTAMP)
@@ -114,5 +129,20 @@ public class ActivationRecord implements Serializable {
 	public void setParentMobile(String parentMobile) {
 		this.parentMobile = parentMobile;
 	}
-	
+
+	public String getCourseId() {
+		return courseId;
+	}
+
+	public void setCourseId(String courseId) {
+		this.courseId = courseId;
+	}
+
+	public String getCourseName() {
+		return courseName;
+	}
+
+	public void setCourseName(String courseName) {
+		this.courseName = courseName;
+	}
 }

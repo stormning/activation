@@ -20,11 +20,14 @@
     <![endif]-->
   </head>
   <body>
-    <tiles:insertAttribute name="global" />
-
+    <tiles:insertAttribute name="global"/>
+	
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="//code.jquery.com/jquery.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="${rs}/thirdparty/bootstrap/js/bootstrap.min.js"></script>
+    <c:if test="${not empty js}">
+    	<script src="${rs}/js/${js}.js"></script>
+    </c:if>
   </body>
 </html>
