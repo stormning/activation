@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="../include.jsp"%>
 <c:set var="js" value="admin" scope="request"/>
 <div class="page-header text-center">
@@ -53,5 +52,8 @@
 
 <script>
 	var param = {};
-	param.recordUrl = "${ctx}/admin/record";
+	<shiro:hasRole name="sa">
+		param.superadmin = true;
+		param.recordUrl = "${ctx}/admin/record";
+	</shiro:hasRole>
 </script>

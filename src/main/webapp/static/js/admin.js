@@ -41,9 +41,11 @@
 						$(".alert-danger").find(".msg").html(_errorMsg).end().show();
 					}
 					$(".requestBtn").button("complete");
-				}, 500);
+				}, 300);
 			});
 		});
-		$("#recordHolder").load(param.recordUrl);
+		if(param.superadmin){
+			$("#recordHolder").load(param.recordUrl);
+		}
 	});
 })($);

@@ -58,4 +58,8 @@
         <property name="defaultErrorView" value="core.errorDefault" />
         <property name="exceptionAttribute" value="exception"/>
 	</bean>
+	
+	<mvc:view-controller path="/" view-name="redirect:/admin"/>
+	<mvc:view-controller path="/login" view-name="loginout.login"/>
+	<mvc:view-controller path="/error/404" view-name="error.404"/>
 </beans>

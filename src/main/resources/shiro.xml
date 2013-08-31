@@ -6,8 +6,8 @@
  	<bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
 	    <property name="securityManager" ref="securityManager"/>
 	    <property name="unauthorizedUrl" value="/logout"/>
-	    <property name="successUrl" value="/"/>
-	    <property name="loginUrl" value="/"/>
+	    <property name="successUrl" value="/admin"/>
+	    <property name="loginUrl" value="/login"/>
 	    <!-- override these for application-specific URLs if you like:
 	    <property name="loginUrl" value="/login.jsp"/>
 	    <property name="successUrl" value="/home.jsp"/>
@@ -23,11 +23,8 @@
 	    <property name="filterChainDefinitions">
 	        <value>
 	            /resources/**=anon
-	          <!--   /admin/** = authc, roles[superadmin,admin]
-	            /page/** = authc, roles[superadmin]
-	            /global/** = authc, roles[superadmin]
-	            /widget/** = authc, roles[superadmin]
-	            /layout/** = authc, roles[superadmin] -->
+	            /admin/record = authc,roles[sa]
+	            /admin/** = authc, roles[a]
 	            /** = anon
 	        </value>
 	    </property>
@@ -73,7 +70,8 @@
 		<property name="entityClass" value="com.slyak.user.model.User"/>
 		<property name="usernameField" value="email"/>
 		<property name="passwordField" value="password"/>
-		<property name="credentialsMatcher" ref="credentialsMatcher"/>
+		<property name="rolesField" value="roles"/>
+		<!-- <property name="credentialsMatcher" ref="credentialsMatcher"/> -->
 	</bean>
 	
 	<bean id="credentialsMatcher" class="org.apache.shiro.authc.credential.HashedCredentialsMatcher">
