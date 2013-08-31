@@ -25,9 +25,14 @@ public class AdminController {
 	private ActivationService activationService;
 
 	@RequestMapping
-	public String index(@PageableDefaults(sort="id",sortDir=Direction.DESC) Pageable pageable,ModelMap modelMap) {
-		modelMap.put("page", activationService.findAll(pageable));
+	public String index() {
 		return "admin.index";
+	}
+	
+	@RequestMapping("/record")
+	public String record(@PageableDefaults(sort="id",sortDir=Direction.DESC) Pageable pageable,ModelMap modelMap) {
+		modelMap.put("page", activationService.findAll(pageable));
+		return "alone:admin.record";
 	}
 
 	@RequestMapping(method = RequestMethod.POST, value = "/requestActivation")

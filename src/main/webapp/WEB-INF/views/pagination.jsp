@@ -8,7 +8,6 @@
 	if (p != null) {
 		int totalPages = p.getTotalPages();
 		if(totalPages>1){
-		
 		int currentPage = p.getNumber()+1;
 		int size = p.getSize();
 		//7 buttons
@@ -16,25 +15,23 @@
 		int half = maxButton/2;
 		
 		
-		int startButton = currentPage-half <0 ?1:currentPage-half;
-		int endButton = Math.max(currentPage-half, totalPages);
+		int startButton = Math.max(currentPage-half,1);
+		int endButton = Math.min(startButton+maxButton-1, totalPages);
 		%>
-		<div class="pagination pagination-centered">
-			<ul>
-				<% for (int i = startButton;i<=endButton;i++) {
-					if(startButton>1 && i==startButton-1){
-				    %>
-					<li><a href="?page.page=">Prev</a></li>
-				    <%}%>
-					<li <%if(i==currentPage){%>class="active"<%} %>>
-						<a <%if(i!=currentPage){%>href="?page.page=<%=i%>"<%}%>><%=i%></a>
-					</li>
-			        <%if(endButton<totalPages && i==endButton-1){%>
-					<li><a href="?page.page=">Next</a></li>
-				    <%}
-				}%>	
-			</ul>
-		</div>
+		<ul class="pagination">
+				<%if(startButton>1){%>
+				<li><a href="?page.page=0" page="1">第一页</a></li>
+			    <%}
+				for (int i = startButton;i<=endButton;i++) {
+				%>
+				<li <%if(i==currentPage){%>class="active"<%} %>>
+					<a <%if(i!=currentPage){%>href="?page.page=<%=i%>"<%}%> page="<%=i%>"><%=i%></a>
+				</li>
+				<% }%>
+				<%if(endButton<totalPages){%>
+				<li><a href="?page.page=<%=totalPages%>" page="<%=totalPages%>">最后一页</a></li>
+			    <%}%>	
+		</ul>
 		<%
 	}
 	}

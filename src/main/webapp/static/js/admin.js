@@ -1,6 +1,7 @@
 (function($) {
 	$(function() {
 		$(".requestBtn").click(function() {
+			$(".verifycode").html("");
 			var _errorMsg;
 			var _f = $(".activation-form form");
 			if(!(_f.find("input[name=cardNo]").val()&&_f.find("input[name=password]").val()&&_f.find("input[name=hardCode]").val())){
@@ -13,13 +14,13 @@
 			$(".requestBtn").button("loading");
 			$.post(_f.attr("action"), _f.serializeArray(), function(res) {
 				setTimeout(function(){
+					console.log(res);
 					if (res.success=="1") {
-						$(".verifycode").each(function(){
-							$(this).html(res.verifycode);
-						});
+						$(".verifycode").html(res.verifyCode);
 						$(".alert-danger").hide();
 						$(".alert-info").hide();
 						$(".alert-success").show();
+						$("#recordHolder").load(param.recordUrl);
 					} else {
 						switch (res.errorCode) {
 						case "0":
@@ -43,5 +44,6 @@
 				}, 500);
 			});
 		});
+		$("#recordHolder").load(param.recordUrl);
 	});
 })($);
