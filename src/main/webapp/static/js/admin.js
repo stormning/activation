@@ -14,13 +14,14 @@
 			$(".requestBtn").button("loading");
 			$.post(_f.attr("action"), _f.serializeArray(), function(res) {
 				setTimeout(function(){
-					console.log(res);
 					if (res.success=="1") {
 						$(".verifycode").html(res.verifyCode);
 						$(".alert-danger").hide();
 						$(".alert-info").hide();
 						$(".alert-success").show();
-						$("#recordHolder").load(param.recordUrl);
+						if(param.superadmin){
+							$("#recordHolder").load(param.recordUrl);
+						}
 					} else {
 						switch (res.errorCode) {
 						case "0":
