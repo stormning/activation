@@ -18,6 +18,7 @@
 				<th>销售员</th>
 				<th>家长（手机）</th>
 				<th>学生</th>
+				<th>操作员</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -32,6 +33,7 @@
 					<td>${record.seller}</td>
 					<td>${record.parentName}<c:if test="${not empty record.parentMobile}">(${record.parentMobile})</c:if></td>
 					<td>${record.studentName}</td>
+					<td>${record.opUser.email}</td>
 				</tr>
 			</c:forEach>
 		</tbody>

@@ -16,6 +16,8 @@ import javax.persistence.Transient;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
+import com.slyak.user.model.User;
+
 @Entity
 @Table(name="t_activation_record")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
@@ -57,6 +59,12 @@ public class ActivationRecord implements Serializable {
 
 	@Column(name = "parent_mobile")
 	private String parentMobile;
+	
+	@Column(name = "operator")
+	private Long operator;
+	
+	@Transient
+	private User opUser;
 
 	public Long getId() {
 		return id;
@@ -145,4 +153,21 @@ public class ActivationRecord implements Serializable {
 	public void setCourseName(String courseName) {
 		this.courseName = courseName;
 	}
+
+	public Long getOperator() {
+		return operator;
+	}
+
+	public void setOperator(Long operator) {
+		this.operator = operator;
+	}
+
+	public User getOpUser() {
+		return opUser;
+	}
+
+	public void setOpUser(User opUser) {
+		this.opUser = opUser;
+	}
+	
 }

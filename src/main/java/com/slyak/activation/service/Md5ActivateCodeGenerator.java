@@ -6,8 +6,7 @@ import org.apache.commons.lang.StringUtils;
 public class Md5ActivateCodeGenerator {
 	private static final String SALT = "asFsd650VHI^%dGJ:JIGFH&*a3vsJdfG12";
 	
-	public static String generate(String courseId,String version,String hardCode) {
-		String verifyCode = courseId+version+hardCode;
+	public static String generate(String verifyCode) {
         return StringUtils.left(DigestUtils.md5Hex(verifyCode + SALT), 6);
     }
 	

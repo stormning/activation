@@ -21,6 +21,8 @@ import com.slyak.activation.model.Course;
 import com.slyak.activation.model.StudyCard;
 import com.slyak.activation.service.ActivationService;
 import com.slyak.activation.service.Md5ActivateCodeGenerator;
+import com.slyak.user.dao.UserDao;
+import com.slyak.user.util.LoginUserHelper;
 
 @Service
 public class ActivationServiceImpl implements ActivationService {
@@ -39,6 +41,9 @@ public class ActivationServiceImpl implements ActivationService {
 	
 	@Value("#{config['activate.hardcode.maxcount']}")
 	private int hardCodeMaxCount = 1;
+	
+	@Autowired
+	private UserDao userDao;
 	
 
 	public String activate(ActivationRequest request) throws ActivationException{
@@ -63,7 +68,9 @@ public class ActivationServiceImpl implements ActivationService {
 			if(eachHardCodeCount>=eachHardCodeMaxCount){
 				throw new ActivationException(ErrorCode.HARDCODE_OVER_TIMES_ERROR);
 			}
-			String verifyCode = Md5ActivateCodeGenerator.generate(card.getCourseId(), "0", hardCode);
+			//“a学习卡号#密码#课程ID”+“数字1”+四位机器码
+			String credStr = "a"+ cardNo+"#"+request.getPassword()+"#"+card.getCourseId()+"#1"+hardCode;
+			String verifyCode = Md5ActivateCodeGenerator.generate(credStr);
 			
 			ActivationRecord ar = new ActivationRecord();
 			ar.setParentMobile(request.getParentMobile());
@@ -75,6 +82,7 @@ public class ActivationServiceImpl implements ActivationService {
 			ar.setActivateAt(new Date());
 			ar.setVerifyCode(verifyCode);
 			ar.setCourseId(card.getCourseId());
+			ar.setOperator(LoginUserHelper.getLoginUserId());
 			activationRecordDAO.save(ar);
 			return verifyCode;
 		}
@@ -89,6 +97,7 @@ public class ActivationServiceImpl implements ActivationService {
 				if(course!=null){
 					ar.setCourseName(course.getName());
 				}
+				ar.setOpUser(userDao.findOne(ar.getOperator()));
 			}
 		}
 		return page;
