@@ -34,7 +34,7 @@
 							_errorMsg = "该卡已经过期!";
 							break;	
 						default:
-							_errorMsg = "未知错误";
+							_errorMsg = "网络异常请重试";
 							break;
 						}
 						$(".alert-info").hide();
