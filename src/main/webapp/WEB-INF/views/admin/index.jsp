@@ -15,7 +15,7 @@
 </div>
 <div class="well activation-form">
 	<div class="row">
-		<form class="bs-example-form" role="form" action="${ctx}/admin/requestActivation">
+		<form class="bs-example-form" action="${ctx}/admin/requestActivation" method="post" autocomplete="off">
 			<div class="col-sm-8 col-xs-12">
 				<div class="row">
 					<div class="col-sm-4 col-xs-12"><div class="input-group"><span class="input-group-addon">课程卡号</span><input type="text" class="form-control" name="cardNo" autocomplete="off"></div></div>
