@@ -18,17 +18,17 @@
 		<form class="bs-example-form" role="form" action="${ctx}/admin/requestActivation">
 			<div class="col-sm-8 col-xs-12">
 				<div class="row">
-					<div class="col-sm-4 col-xs-12"><div class="input-group"><span class="input-group-addon">课程卡号</span><input type="text" class="form-control" name="cardNo"></div></div>
-					<div class="col-sm-4 col-xs-12"><div class="input-group"><span class="input-group-addon">密码</span><input type="password" class="form-control" name="password"></div></div>
-					<div class="col-sm-4 col-xs-12"><div class="input-group"><span class="input-group-addon">机器码</span><input type="text" class="form-control" name="hardCode"></div></div>
+					<div class="col-sm-4 col-xs-12"><div class="input-group"><span class="input-group-addon">课程卡号</span><input type="text" class="form-control" name="cardNo" autocomplete="off"></div></div>
+					<div class="col-sm-4 col-xs-12"><div class="input-group"><span class="input-group-addon">密码</span><input type="password" class="form-control" name="password" autocomplete="off"></div></div>
+					<div class="col-sm-4 col-xs-12"><div class="input-group"><span class="input-group-addon">机器码</span><input type="text" class="form-control" name="hardCode" autocomplete="off"></div></div>
 				</div>
 				<div class="row">
-					<div class="col-sm-6 col-xs-12"><div class="input-group"><span class="input-group-addon">销售姓名</span><input type="text" class="form-control" name="seller"></div></div>
-					<div class="col-sm-6 col-xs-12"><div class="input-group"><span class="input-group-addon">学生姓名</span><input type="text" class="form-control" name="studentName"></div></div>
+					<div class="col-sm-6 col-xs-12"><div class="input-group"><span class="input-group-addon">销售姓名</span><input type="text" class="form-control" name="seller" autocomplete="off"></div></div>
+					<div class="col-sm-6 col-xs-12"><div class="input-group"><span class="input-group-addon">学生姓名</span><input type="text" class="form-control" name="studentName" autocomplete="off"></div></div>
 				</div>
 				<div class="row">
-					<div class="col-sm-6 col-xs-12"><div class="input-group"><span class="input-group-addon">家长姓名</span><input type="text" class="form-control" name="parentName"></div></div>
-					<div class="col-sm-6 col-xs-12"><div class="input-group"><span class="input-group-addon">家长手机</span><input type="text" class="form-control" name="parentMobile"></div></div>
+					<div class="col-sm-6 col-xs-12"><div class="input-group"><span class="input-group-addon">家长姓名</span><input type="text" class="form-control" name="parentName" autocomplete="off"></div></div>
+					<div class="col-sm-6 col-xs-12"><div class="input-group"><span class="input-group-addon">家长手机</span><input type="text" class="form-control" name="parentMobile" autocomplete="off"></div></div>
 				</div>
 			</div>
 		</form>
