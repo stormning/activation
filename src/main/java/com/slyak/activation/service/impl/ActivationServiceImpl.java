@@ -69,7 +69,7 @@ public class ActivationServiceImpl implements ActivationService {
 				throw new ActivationException(ErrorCode.HARDCODE_OVER_TIMES_ERROR);
 			}
 			//“a学习卡号#密码#课程ID”+“数字1”+四位机器码
-			String credStr = "a"+ cardNo+"#"+request.getPassword()+"#"+card.getCourseId()+"#1"+hardCode;
+			String credStr = "a"+ cardNo+"#"+request.getPassword()+"#"+card.getCourseId()+"1"+hardCode;
 			String verifyCode = Md5ActivateCodeGenerator.generate(credStr);
 			
 			ActivationRecord ar = new ActivationRecord();
