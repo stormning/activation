@@ -23,7 +23,7 @@
     <tiles:insertAttribute name="global"/>
 	
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="//code.jquery.com/jquery.js"></script>
+    <script src="${rs}/thirdparty/jquery-1.10.2.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="${rs}/thirdparty/bootstrap/js/bootstrap.min.js"></script>
     <c:if test="${not empty js}">
