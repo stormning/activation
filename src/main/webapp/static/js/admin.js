@@ -37,7 +37,7 @@
 							_errorMsg = "学习卡对应的学科不存在!";
 							break;
 						case "4":
-							_errorMsg = "没有权限激活该学段的课程!";
+							_errorMsg = "没有权限激活这种类型的课程!";
 							break;	
 						default:
 							_errorMsg = "网络异常请重试";
