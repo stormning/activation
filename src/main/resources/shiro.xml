@@ -28,8 +28,8 @@
 	    <property name="filterChainDefinitions">
 	        <value>
 	            /resources/**=anon
-	            /admin/record = authc,rolesor[pa,sa]
-	            /admin/** = authc,rolesor[pu,su]
+	            /admin/record = authc,rolesor[a0,a1]
+	            /admin/** = authc,rolesor[u0,u1]
 	            /** = anon
 	        </value>
 	    </property>
