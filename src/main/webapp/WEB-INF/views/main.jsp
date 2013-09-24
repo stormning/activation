@@ -1,3 +1,4 @@
+<%@page import="java.util.Date"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="include.jsp"%>
 <!DOCTYPE html>
@@ -27,7 +28,7 @@
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="${rs}/thirdparty/bootstrap/js/bootstrap.min.js"></script>
     <c:if test="${not empty js}">
-    	<script src="${rs}/js/${js}.js"></script>
+    	<script src="${rs}/js/${js}.js?v=<fmt:formatDate value="<%=new Date() %>" pattern="yyyyMMdd"/>"></script>
     </c:if>
   </body>
 </html>
