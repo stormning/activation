@@ -53,7 +53,7 @@
 
 <script>
 	var param = {};
-	<shiro:hasAnyRoles name="pa,sa">
+	<shiro:hasAnyRoles name="a1,a2">
 		param.superadmin = true;
 		param.recordUrl = "${ctx}/admin/record";
 	</shiro:hasAnyRoles>

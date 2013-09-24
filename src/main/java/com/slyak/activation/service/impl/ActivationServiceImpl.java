@@ -15,7 +15,6 @@ import org.apache.shiro.subject.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
@@ -56,38 +55,35 @@ public class ActivationServiceImpl implements ActivationService {
 	@Autowired
 	private UserDao userDao;
 
-	private static final String rolePrimaryUser = "pu";
-	private static final String rolePrimaryAdmin = "pa";
+	private static final String s0User = "u0";
+	private static final String s0Admin = "a0";
 	
-	private static final String roleSeniorUser = "su";
-	private static final String roleSeniorAdmin = "sa";
+	private static final String s1User = "u1";
+	private static final String s1Admin = "a1";
 	
-	private static final Set<String> primaryActivators = new HashSet<String>();
-//	private static final Set<String> primaryRecordviewers = new HashSet<String>();
+	private static final Set<String> s0Activators = new HashSet<String>();
 	
-	private static final Set<String> seniorActivators = new HashSet<String>();
-//	private static final Set<String> seniorRecordviewers = new HashSet<String>();
+	private static final Set<String> s1Activators = new HashSet<String>();
 	
 	private static final Map<Section,Set<String>> sectionActivators = new HashMap<Section, Set<String>>();
-//	private static final Map<Section,Set<String>> sectionRecordviewers = new HashMap<Section, Set<String>>();
 	
 	private static final Map<String,Set<Section>> viewerAndSections = new HashMap<String, Set<Section>>();
 	
 	static {
-		primaryActivators.add(rolePrimaryUser);
-		primaryActivators.add(rolePrimaryAdmin);
-		sectionActivators.put(Section.PRIMARY, primaryActivators);
+		s0Activators.add(s0User);
+		s0Activators.add(s0Admin);
+		sectionActivators.put(Section.S0, s0Activators);
 		
 //		primaryRecordviewers.add(rolePrimaryAdmin);
 //		sectionRecordviewers.put(Section.PRIMARY, primaryRecordviewers);
 		
 		
-		seniorActivators.add(roleSeniorUser);
-		seniorActivators.add(roleSeniorAdmin);
-		sectionActivators.put(Section.SENIOR, seniorActivators);
+		s1Activators.add(s1User);
+		s1Activators.add(s1Admin);
+		sectionActivators.put(Section.S1, s1Activators);
 		
-		viewerAndSections.put(rolePrimaryAdmin, Collections.singleton(Section.PRIMARY));
-		viewerAndSections.put(roleSeniorAdmin, Collections.singleton(Section.SENIOR));
+		viewerAndSections.put(s0Admin, Collections.singleton(Section.S0));
+		viewerAndSections.put(s1Admin, Collections.singleton(Section.S1));
 //		seniorRecordviewers.add(roleSeniorAdmin);
 //		sectionRecordviewers.put(Section.SENIOR, seniorRecordviewers);
 	}
