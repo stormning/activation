@@ -24,10 +24,10 @@
 		            <li><a href="${ctx}/logout">退出登录</a></li>
 		        </ul>
 		        <p class="navbar-text pull-right">身份:
-					<shiro:hasRole name="sa">
+					<shiro:hasAnyRoles name="pa,sa">
 						超级管理员
 						<c:set var="isSuperAdmin" value="true" scope="request"/>
-					</shiro:hasRole>
+					</shiro:hasAnyRoles>
 					<c:if test="${!isSuperAdmin}">
 						<shiro:hasRole name="a">普通管理员</shiro:hasRole>
 					</c:if>

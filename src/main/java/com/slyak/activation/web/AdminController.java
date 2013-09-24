@@ -1,6 +1,6 @@
 package com.slyak.activation.web;
 
-	import java.util.HashMap;
+import java.util.HashMap;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,7 +23,7 @@ public class AdminController {
 
 	@Autowired
 	private ActivationService activationService;
-
+	
 	@RequestMapping
 	public String index() {
 		return "admin.index";

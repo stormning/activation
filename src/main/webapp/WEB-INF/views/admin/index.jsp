@@ -48,12 +48,13 @@
 		</div>
 	</div>
 </div>
+
 <div id="recordHolder"></div>
 
 <script>
 	var param = {};
-	<shiro:hasRole name="sa">
+	<shiro:hasAnyRoles name="pa,sa">
 		param.superadmin = true;
 		param.recordUrl = "${ctx}/admin/record";
-	</shiro:hasRole>
+	</shiro:hasAnyRoles>
 </script>

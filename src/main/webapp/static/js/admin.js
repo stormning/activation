@@ -32,6 +32,12 @@
 							break;
 						case "2":
 							_errorMsg = "该卡已经过期!";
+							break;
+						case "3":
+							_errorMsg = "学习卡对应的学科不存在!";
+							break;
+						case "4":
+							_errorMsg = "没有权限激活该学段的课程!";
 							break;	
 						default:
 							_errorMsg = "网络异常请重试";

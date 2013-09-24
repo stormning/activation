@@ -8,6 +8,8 @@ import javax.persistence.Table;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
+import com.slyak.activation.enums.Section;
+
 @Entity
 @Table(name = "t_course")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
@@ -17,6 +19,9 @@ public class Course {
 	
 	@Column
 	private String name;
+	
+	@Column
+	private Section section;
 
 	public String getId() {
 		return id;
@@ -32,5 +37,13 @@ public class Course {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	public Section getSection() {
+		return section;
+	}
+
+	public void setSection(Section section) {
+		this.section = section;
 	}
 }

@@ -16,4 +16,14 @@ public class ErrorCode {
 	 * 超过学习卡激活有效期
 	 */
 	public static final int EXPIRED_CARD_ERROR = 2;
+
+	/**
+	 * 学习卡对应的学科不存在
+	 */
+	public static final int COURSE_NOT_EXIST_ERROR = 3;
+
+	/**
+	 * 没有权限激活该学段的课程
+	 */
+	public static final int NO_SECTION_PERMISSION_ERROR = 4;
 }

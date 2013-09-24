@@ -20,15 +20,22 @@
 	            <entry key="anAlias" value-ref="someFilter"/>
 	        </util:map>
 	    </property> -->
+	    <property name="filters">
+	    	<map>
+	    		<entry key="rolesor" value-ref="rolesorFilter"/>
+	    	</map>
+	    </property>
 	    <property name="filterChainDefinitions">
 	        <value>
 	            /resources/**=anon
-	            /admin/record = authc,roles[sa]
-	            /admin/** = authc, roles[a]
+	            /admin/record = authc,rolesor[pa,sa]
+	            /admin/** = authc,rolesor[pu,su]
 	            /** = anon
 	        </value>
 	    </property>
 	</bean>
+	
+	<bean id="rolesorFilter" class="com.slyak.core.web.RolesorAuthorizationFilter"/>
 	
 	<bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
 	    <!-- Single realm app.  If you have multiple realms, use the 'realms' property instead. -->
