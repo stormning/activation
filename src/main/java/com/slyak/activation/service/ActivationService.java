@@ -1,3 +1,11 @@
+/**
+ * Project name : activation
+ * File name : ActivationService.java
+ * Package name : com.slyak.activation.service
+ * Date : 2013-11-27
+ * Copyright : 2013 , SLYAK.COM All Rights Reserved
+ * Author : stormning@163.com
+ */
 package com.slyak.activation.service;
 
 import org.springframework.data.domain.Page;
